@@ -1,0 +1,58 @@
+#安卓文件布局
+> 安卓常用布局方式
+
+线性布局
+---
+```java
+LinearLayout
+
+fill_parent //填充父窗体
+match_parent // 父窗体剩余部分都给他
+warp_parent // 包裹内容
+
+graveity //当前控件相对于子控件的对齐方式（就是内部控件的对齐方式）
+margin //控件和四周的间距
+padding //当前控件中的子控件 相对于当前控件四周的间距
+
+```
+
+
+<h2>相对布局</h2>
+
+
+```java
+RelativeLayout
+
+layout_below:位于哪个控件的下方
+layout_above:位于哪个控件的上方
+layout_toleftof:位于哪个控件的左方
+layout_torightof:位于哪个控件的右方
+layout_aliginParentRinght:当前控件基于父窗体的对齐方式
+layout_centerInParent:位于父窗体中间
+```
+
+<h2>帧布局</h2>
+```java
+FrameLayout
+
+后面的会叠加到上面
+没啥可说的，一层一层的叠加上去
+
+```
+
+<h2>表格布局</h2>
+```java
+tablelayout
+
+没人用
+
+<TableRow>
+	中间的的作为一列
+</TableRow>
+```
+
+<h2>绝对布局</h2>
+
+```java
+被google抛弃了 不用学了！！！！！！！！
+```
