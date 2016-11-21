@@ -1,0 +1,57 @@
+#Android 文件储存与读取
+
+
+> SharedPreferences 方式
+
+```java
+SharedPreferences sharedPreferences = context.getSharedPreferences("userinfo",MODE_PRIVATE);//第一个参数设置保存的文件名，之后实际保存为xml,第二个参数为权限
+ SharedPreferences.Editor editor = sharedPreferences.edit();//通过sharedPreferences 获取 editor
+
+ editor.putString("name",uname.getText().toString());//数据写入
+ editor.putString("password",upassword.getText().toString());
+
+
+String password = sharedPreferences.getString("password","没有密码");//读取
+
+
+ editor.commit();//commit 提交
+```
+
+> 保存数据到私有目录 和sd卡
+
+```java
+ private  boolean jiance(){
+
+        if(Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {//判断SD卡是否存在
+            Toast.makeText(context,"恭喜SD卡存在",Toast.LENGTH_LONG).show();
+            return true;
+        }
+        else {
+            Toast.makeText(context,"SD卡不存在或没有被挂载",Toast.LENGTH_LONG).show();
+        }
+
+        return false;
+    }
+ private void xianshi(){
+        File file = Environment.getExternalStorageDirectory();
+        long zong = file.getTotalSpace();//获取总空间
+        long sheng = file.getUsableSpace();//获取可用空间
+        String s = Formatter.formatFileSize(context, sheng);
+        String z = Formatter.formatFileSize(context,zong);//格式化成y用户能看懂的单位
+        sk.setText(s);
+        zk.setText(z);
+
+    }
+    
+    
+ public void onClick(View v) {
+                boolean cun = jiance();
+                if(cun){
+                    xianshi();
+                    syfile.setText(context.getFilesDir().getPath());//获取私有目录
+                    sdfile.setText(Environment.getExternalStorageDirectory().getPath());//获取SD卡目录
+
+                }
+            }
+        });
+```
